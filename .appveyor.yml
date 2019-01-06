@@ -1,0 +1,14 @@
+shallow_clone: true
+
+environment:
+  PATH: C:\cygwin64\bin;%PATH%
+
+build_script:
+- cmd: C:\cygwin64\bin\bash.exe build.sh --parallel --jit
+
+after_build:
+- cmd: 7z a -tzip luatex-bin-x86_64-cygwin.zip build/texk/web2c/luatex.exe build/texk/web2c/luajittex.exe
+
+artifacts:
+  - path: luatex-bin-x86_64-cygwin.zip
+    name: luatex
